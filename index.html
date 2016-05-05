@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Awesome Answers Client</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-2.2.3.min.js"></script>
+    <script src="mustache.min.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--
+    We use a script tag with Mustache.js in order to have a snippet of HTML that won't be displayed right away on the page but we can use this template with Javascript to render HTML and then insert it in the page.
+
+    You can think of it as a Rails partial.
+
+    Variable parts should be put within {{ }} with Moustache.
+
+    { title: "Hello World", id: 123, view_count: 10 }
+    -->
+    <script id="question-summary", type="x-tmpl-mustache">
+      <!-- Prevents link from going anywhere -->
+      <h2 id="question-{{id}}">
+        <a href="javascript:void(0);" data-id="{{ id }}">{{ title }}</a>
+      </h2>
+      <p>{{ view_count }} view(s)</p>
+      <hr>
+    </script>
+
+    <script id="question-details", type="x-tmpl-mustache">
+      <a href="javascript:void(0)" id="back">&lt; Back</a>
+      <h1>{{ title }}</h1>
+      <p>{{ body }}</p>
+      <p>Created On: {{ created_at }}</p>
+      <p>View Count: {{ view_count }}</p>
+      <hr>
+    </script>
+
+    <div id="questions"></div>
+    <div id="single-question"></div>
+
+  </body>
+</html>
